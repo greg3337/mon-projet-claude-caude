@@ -199,6 +199,61 @@
       color: rgba(255, 255, 255, 0.78);
     }
 
+    /* ── Section Qui suis-je ── */
+    .qui-suis-je {
+      display: flex;
+      gap: 28px;
+      align-items: flex-start;
+    }
+
+    .avatar {
+      flex-shrink: 0;
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #ff00ff, #00ffff);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.6rem;
+      box-shadow: 0 0 18px rgba(255, 0, 255, 0.5), 0 0 36px rgba(0, 255, 255, 0.2);
+      border: 2px solid rgba(255, 0, 255, 0.4);
+    }
+
+    .qui-suis-je-content {
+      flex: 1;
+    }
+
+    .qui-suis-je-content h2 {
+      color: rgba(180, 180, 255, 0.95);
+      margin-bottom: 14px;
+      font-size: 1.4rem;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 14px;
+    }
+
+    .tag {
+      font-family: 'VT323', monospace;
+      font-size: 1rem;
+      letter-spacing: 1px;
+      padding: 3px 12px;
+      border-radius: 2px;
+      border: 1px solid rgba(0, 255, 255, 0.4);
+      color: #00ffff;
+      background: rgba(0, 255, 255, 0.07);
+      text-shadow: 0 0 6px rgba(0, 255, 255, 0.5);
+    }
+
+    @media (max-width: 500px) {
+      .qui-suis-je { flex-direction: column; align-items: center; text-align: center; }
+      .tags { justify-content: center; }
+    }
+
     footer {
       position: relative;
       z-index: 1;
@@ -232,6 +287,23 @@
     <p>Developpeur en herbe — passionne par le web et l'apprentissage</p>
     <div class="header-divider"></div>
   </header>
+
+  <div class="card">
+    <div class="qui-suis-je">
+      <div class="avatar">👾</div>
+      <div class="qui-suis-je-content">
+        <h2>Qui suis-je ?</h2>
+        <p>Je m'appelle Greg, passionné par le web et le développement. J'apprends à construire des sites internet depuis le début, en partant de zéro. Chaque ligne de code est une nouvelle victoire !</p>
+        <p style="margin-top: 10px;">Curieux, motivé et toujours prêt à relever un nouveau défi numérique.</p>
+        <div class="tags">
+          <span class="tag">Développeur débutant</span>
+          <span class="tag">HTML / CSS</span>
+          <span class="tag">Passionné du web</span>
+          <span class="tag">En apprentissage</span>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <div class="card">
     <h2>A propos</h2>
