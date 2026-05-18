@@ -13,71 +13,162 @@
 
     body {
       font-family: 'Segoe UI', sans-serif;
-      background: #f0f4ff;
+      background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
       color: #333;
       display: flex;
       flex-direction: column;
       align-items: center;
       min-height: 100vh;
       padding: 40px 20px;
+      position: relative;
+      overflow-x: hidden;
     }
 
+    /* Blobs de couleur en arrière-plan pour que le flou soit visible */
+    body::before {
+      content: '';
+      position: fixed;
+      width: 520px;
+      height: 520px;
+      background: radial-gradient(circle, #7b5ea7 0%, #4a6cf7 60%, transparent 100%);
+      border-radius: 50%;
+      top: -160px;
+      left: -160px;
+      filter: blur(60px);
+      opacity: 0.7;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    body::after {
+      content: '';
+      position: fixed;
+      width: 440px;
+      height: 440px;
+      background: radial-gradient(circle, #f093fb 0%, #f5576c 60%, transparent 100%);
+      border-radius: 50%;
+      bottom: -140px;
+      right: -140px;
+      filter: blur(60px);
+      opacity: 0.6;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ── Liquid Glass Header ── */
     header {
-      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #4a6cf7 100%);
-      color: white;
+      position: relative;
+      z-index: 1;
       width: 100%;
       max-width: 800px;
-      border-radius: 12px;
-      padding: 50px 40px 40px;
+      border-radius: 28px;
+      padding: 52px 44px 44px;
       text-align: center;
       margin-bottom: 30px;
-      box-shadow: 0 8px 32px rgba(74, 108, 247, 0.3);
+      color: white;
+      overflow: hidden;
+
+      /* Verre dépoli */
+      background: rgba(255, 255, 255, 0.10);
+      backdrop-filter: blur(40px) saturate(180%) brightness(1.1);
+      -webkit-backdrop-filter: blur(40px) saturate(180%) brightness(1.1);
+
+      /* Bordure lumineuse */
+      border: 1px solid rgba(255, 255, 255, 0.28);
+
+      /* Ombres : profondeur + lueur intérieure */
+      box-shadow:
+        0 24px 64px rgba(0, 0, 0, 0.45),
+        inset 0 1.5px 0 rgba(255, 255, 255, 0.55),
+        inset 0 -1px 0 rgba(255, 255, 255, 0.08),
+        inset 1px 0 0 rgba(255, 255, 255, 0.12),
+        inset -1px 0 0 rgba(255, 255, 255, 0.12);
+    }
+
+    /* Reflet spéculaire supérieur (effet épaisseur du verre) */
+    header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        175deg,
+        rgba(255, 255, 255, 0.22) 0%,
+        rgba(255, 255, 255, 0.04) 40%,
+        transparent 60%
+      );
+      border-radius: inherit;
+      pointer-events: none;
+    }
+
+    /* Lueur colorée diffuse en bas */
+    header::after {
+      content: '';
+      position: absolute;
+      bottom: -30px;
+      left: 10%;
+      width: 80%;
+      height: 60px;
+      background: radial-gradient(ellipse, rgba(120, 100, 255, 0.35) 0%, transparent 70%);
+      filter: blur(20px);
+      pointer-events: none;
     }
 
     .header-badge {
       display: inline-block;
-      background: rgba(255,255,255,0.15);
-      border: 1px solid rgba(255,255,255,0.25);
+      background: rgba(255, 255, 255, 0.14);
+      border: 1px solid rgba(255, 255, 255, 0.30);
       border-radius: 20px;
       padding: 4px 16px;
-      font-size: 0.8rem;
-      letter-spacing: 2px;
+      font-size: 0.75rem;
+      letter-spacing: 2.5px;
       text-transform: uppercase;
-      margin-bottom: 16px;
+      margin-bottom: 18px;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
     }
 
     header h1 {
-      font-size: 2.4rem;
+      font-size: 2.5rem;
       font-weight: 700;
       margin-bottom: 12px;
       letter-spacing: -0.5px;
+      text-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
     }
 
     header p {
       font-size: 1.05rem;
-      opacity: 0.8;
+      opacity: 0.82;
+      text-shadow: 0 1px 8px rgba(0, 0, 0, 0.25);
     }
 
     .header-divider {
       width: 50px;
-      height: 3px;
-      background: rgba(255,255,255,0.4);
+      height: 2px;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.6), transparent);
       border-radius: 2px;
-      margin: 20px auto 0;
+      margin: 22px auto 0;
     }
 
     .card {
-      background: white;
+      position: relative;
+      z-index: 1;
+      background: rgba(255, 255, 255, 0.07);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: rgba(255, 255, 255, 0.92);
       width: 100%;
       max-width: 800px;
-      border-radius: 12px;
+      border-radius: 16px;
       padding: 30px;
       margin-bottom: 20px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+      box-shadow:
+        0 8px 32px rgba(0, 0, 0, 0.25),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
     }
 
     .card h2 {
-      color: #4a6cf7;
+      color: rgba(180, 180, 255, 0.95);
       margin-bottom: 12px;
       font-size: 1.4rem;
     }
@@ -85,23 +176,26 @@
     .card p {
       line-height: 1.7;
       font-size: 1rem;
+      color: rgba(255, 255, 255, 0.78);
     }
 
     footer {
+      position: relative;
+      z-index: 1;
       margin-top: 20px;
       width: 100%;
       max-width: 800px;
-      border-top: 1px solid #dde3f0;
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
       padding-top: 24px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      color: #888;
+      color: rgba(255, 255, 255, 0.45);
       font-size: 0.85rem;
     }
 
     footer a {
-      color: #4a6cf7;
+      color: rgba(160, 160, 255, 0.9);
       text-decoration: none;
     }
 
